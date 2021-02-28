@@ -7,6 +7,9 @@
 
 import Foundation
 
+/// Enum describing the state of the app
+/// the state is changed by a coordinator
+/// after an action is executed
 enum AppState {
     case start
     case progress

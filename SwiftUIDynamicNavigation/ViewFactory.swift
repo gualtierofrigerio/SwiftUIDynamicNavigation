@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Provideds a static func to build a SwiftUI view for a specific AppState
 class ViewFactory {
     static func viewForState(_ state:AppState, coordinator:Coordinator) -> some View {
         @ViewBuilder var renderedView: some View {

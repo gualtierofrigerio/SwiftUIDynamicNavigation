@@ -8,12 +8,15 @@
 import Foundation
 import SwiftUI
 
+/// actions supported by the Coordinator
 enum Action {
     case cancelCall
     case makeCall
     case gotoStart
 }
 
+/// Coordinator class respnsible for mutating the AppState enum
+/// and provide the correct view for the current state
 class Coordinator:ObservableObject {
     @Published private (set) var state:AppState = .start
     
@@ -38,9 +41,5 @@ class Coordinator:ObservableObject {
             self.state = .success
         }
     }
-}
-
-class ViewPublisher:ObservableObject {
-    
 }
 
