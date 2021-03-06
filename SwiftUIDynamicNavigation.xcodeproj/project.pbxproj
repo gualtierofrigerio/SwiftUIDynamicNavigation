@@ -13,6 +13,10 @@
 		2509023525DD7DA400F7F05C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2509023425DD7DA400F7F05C /* Preview Assets.xcassets */; };
 		2509023D25DD7E0900F7F05C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2509023C25DD7E0900F7F05C /* Coordinator.swift */; };
 		2509024125DD7E5E00F7F05C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2509024025DD7E5E00F7F05C /* AppState.swift */; };
+		25B569F125F12C59005E6E78 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B569F025F12C59005E6E78 /* ContainerView.swift */; };
+		25B569F325F23BC4005E6E78 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B569F225F23BC4005E6E78 /* ProgressView.swift */; };
+		25B569F525F23CBB005E6E78 /* ActionsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B569F425F23CBB005E6E78 /* ActionsHandler.swift */; };
+		25B569F725F28E1B005E6E78 /* ContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B569F625F28E1B005E6E78 /* ContainerViewModel.swift */; };
 		25CBA25A25E967AC00AFDA7F /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CBA25925E967AC00AFDA7F /* StartView.swift */; };
 		25CBA25D25E9687000AFDA7F /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CBA25C25E9687000AFDA7F /* SuccessView.swift */; };
 		25CBA25F25E968E100AFDA7F /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CBA25E25E968E100AFDA7F /* ErrorView.swift */; };
@@ -28,6 +32,10 @@
 		2509023625DD7DA400F7F05C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2509023C25DD7E0900F7F05C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		2509024025DD7E5E00F7F05C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		25B569F025F12C59005E6E78 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		25B569F225F23BC4005E6E78 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		25B569F425F23CBB005E6E78 /* ActionsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsHandler.swift; sourceTree = "<group>"; };
+		25B569F625F28E1B005E6E78 /* ContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewModel.swift; sourceTree = "<group>"; };
 		25CBA25925E967AC00AFDA7F /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		25CBA25C25E9687000AFDA7F /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		25CBA25E25E968E100AFDA7F /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
@@ -64,7 +72,9 @@
 		2509022C25DD7DA200F7F05C /* SwiftUIDynamicNavigation */ = {
 			isa = PBXGroup;
 			children = (
+				25B569F425F23CBB005E6E78 /* ActionsHandler.swift */,
 				2509024025DD7E5E00F7F05C /* AppState.swift */,
+				25B569F625F28E1B005E6E78 /* ContainerViewModel.swift */,
 				2509023C25DD7E0900F7F05C /* Coordinator.swift */,
 				25CBA25B25E967B400AFDA7F /* Views */,
 				2509022D25DD7DA200F7F05C /* SwiftUIDynamicNavigationApp.swift */,
@@ -87,8 +97,10 @@
 		25CBA25B25E967B400AFDA7F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				25B569F025F12C59005E6E78 /* ContainerView.swift */,
 				2509022F25DD7DA200F7F05C /* ContentView.swift */,
 				25CBA25E25E968E100AFDA7F /* ErrorView.swift */,
+				25B569F225F23BC4005E6E78 /* ProgressView.swift */,
 				25CBA25925E967AC00AFDA7F /* StartView.swift */,
 				25CBA25C25E9687000AFDA7F /* SuccessView.swift */,
 			);
@@ -166,12 +178,16 @@
 			files = (
 				2509023D25DD7E0900F7F05C /* Coordinator.swift in Sources */,
 				2509023025DD7DA200F7F05C /* ContentView.swift in Sources */,
+				25B569F725F28E1B005E6E78 /* ContainerViewModel.swift in Sources */,
+				25B569F125F12C59005E6E78 /* ContainerView.swift in Sources */,
 				25DE508725E93BB20045EA15 /* ViewFactory.swift in Sources */,
 				25CBA25A25E967AC00AFDA7F /* StartView.swift in Sources */,
 				2509022E25DD7DA200F7F05C /* SwiftUIDynamicNavigationApp.swift in Sources */,
 				2509024125DD7E5E00F7F05C /* AppState.swift in Sources */,
+				25B569F325F23BC4005E6E78 /* ProgressView.swift in Sources */,
 				25CBA25D25E9687000AFDA7F /* SuccessView.swift in Sources */,
 				25CBA25F25E968E100AFDA7F /* ErrorView.swift in Sources */,
+				25B569F525F23CBB005E6E78 /* ActionsHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
