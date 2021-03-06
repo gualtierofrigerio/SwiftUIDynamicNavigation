@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import Combine
 import SwiftUI
 
-/// actions supported by the Coordinator
-enum Action {
-    case cancelCall
-    case makeCall
-    case gotoStart
+enum ViewAction {
+    case enableLink
+    case dismiss
+    case none
+    case showSheet(Bool)
 }
 
 /// Coordinator class respnsible for mutating the AppState enum
@@ -20,10 +21,31 @@ enum Action {
 class Coordinator:ObservableObject {
     @Published private (set) var state:AppState = .start
     
-    func currentView() -> some View {
-        ViewFactory.viewForState(state, coordinator: self)
+    func nextViewModel() -> ContainerViewModel {
+        let viewModel = ContainerViewModel(withCoordinator: self)
+        if currentViewModel == nil {
+            currentViewModel = viewModel
+        }
+        return viewModel
     }
     
+    @Published private var changesPublisher:ViewAction = .none
+    private var currentViewModel:ContainerViewModel?
+    private var viewModels:[ContainerViewModel] = []
+    
+    
+    private func makeCall() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            if let currentViewModel = self.currentViewModel {
+                print("current view model execute enableLink")
+                currentViewModel.executeViewAction(.enableLink)
+            }
+            self.state = .success
+        }
+    }
+}
+
+extension Coordinator:ActionsHandler {
     func executeAction(_ action:Action) {
         switch action {
         case .cancelCall:
@@ -33,13 +55,8 @@ class Coordinator:ObservableObject {
             makeCall()
         case .gotoStart:
             state = .start
-        }
-    }
-    
-    private func makeCall() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.state = .success
+        case .goBack:
+            changesPublisher = .dismiss
         }
     }
 }
-
