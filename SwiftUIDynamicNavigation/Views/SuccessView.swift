@@ -7,13 +7,14 @@
 
 import SwiftUI
 
+
 struct SuccessView: View {
     let coordinator:Coordinator
     
     var body: some View {
         Text("Success!")
-        Button("Goto start") {
-            coordinator.executeAction(.gotoStart)
+        Button("Go back") {
+            coordinator.executeAction(.goBack)
         }
     }
 }
