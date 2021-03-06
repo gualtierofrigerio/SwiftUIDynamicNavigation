@@ -11,8 +11,11 @@ struct ContentView: View {
     @ObservedObject var coordinator:Coordinator
     
     var body: some View {
-        coordinator.currentView()
+        NavigationView {
+            ContainerView(viewModel: coordinator.nextViewModel())
+        }
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
