@@ -12,16 +12,16 @@ class ViewFactory {
     static func viewForState(_ state:AppState, coordinator:Coordinator) -> some View {
         @ViewBuilder var renderedView: some View {
             if state == .start {
-                StartView(coordinator:coordinator)
+                StartView(actionsHandler:coordinator)
             }
             if state == .progress {
-                Text("in progress...")
+                ProgressView(actionsHandler:coordinator)
             }
             if state == .success {
                 SuccessView(coordinator: coordinator)
             }
             else if state == .failure {
-                ErrorView(coordinator: coordinator)
+                ErrorView(actionsHandler: coordinator)
             }
         }
         return renderedView
