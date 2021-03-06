@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct ErrorView: View {
-    let coordinator:Coordinator
+    let actionsHandler:ActionsHandler
+    
     var body: some View {
         Text("Error :(")
             .foregroundColor(.red)
-        Button("Goto home") {
-            coordinator.executeAction(.gotoStart)
+        Button("Go back") {
+            actionsHandler.executeAction(.goBack)
         }
     }
 }
 
 struct ErrorView_Previews: PreviewProvider {
     static var previews: some View {
-        ErrorView(coordinator: Coordinator())
+        ErrorView(actionsHandler: Coordinator())
     }
 }
