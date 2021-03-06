@@ -8,25 +8,17 @@
 import SwiftUI
 
 struct StartView: View {
-    let coordinator:Coordinator
-    @State var showProgress = false
+    let actionsHandler:ActionsHandler
     
     var body: some View {
         Button("make call") {
-            showProgress = true
-            coordinator.executeAction(.makeCall)
-        }
-        if showProgress {
-            Text("call in progress...")
-            Button("cancel") {
-                coordinator.executeAction(.cancelCall)
-            }
+            actionsHandler.executeAction(.makeCall)
         }
     }
 }
 
 struct StartView_Previews: PreviewProvider {
     static var previews: some View {
-        StartView(coordinator: Coordinator())
+        StartView(actionsHandler: Coordinator())
     }
 }
