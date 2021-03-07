@@ -70,15 +70,24 @@ class Coordinator:ObservableObject {
     private func makeCall() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             if let currentViewModel = self.currentViewModel {
-                print("current view model \(currentViewModel) execute enableLink")
                 currentViewModel.executeViewAction(.enableLink)
             }
-            self.state = .success
+            let callSuccess = Bool.random()
+            var nextViewState:ViewState
+            if callSuccess {
+                self.state = .success
+                nextViewState = .success
+            }
+            else {
+                self.state = .failure
+                nextViewState = .failure
+            }
+            self.state = Bool.random() ? .success : .failure
             self.currentViewModel?.executeViewAction(.enableLink)
             self.currentViewModel?.executeViewAction(.update(.start))
             
             if let viewModel = self.getViewModel(forState: .end) {
-                viewModel.executeViewAction(.update(.success))
+                viewModel.executeViewAction(.update(nextViewState))
                 self.currentViewModel = viewModel
             }
         }
@@ -103,6 +112,7 @@ extension Coordinator:ActionsHandler {
         case .goBack:
             nextAction = .dismiss
             currentViewModel?.executeViewAction(.dismiss)
+            currentViewModel = viewModel(forState: .start)
         }
     }
 }
