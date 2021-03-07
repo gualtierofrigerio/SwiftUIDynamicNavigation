@@ -14,11 +14,9 @@ struct ContainerView: View {
     var body: some View {
         VStack {
             viewModel.currentView()
-            if viewModel.enableNavigationLink {
-                navigationLink()
-            }
+            navigationLink()
         }.onReceive(viewModel.getChangesPublisher()) { action in
-            self.executeViewAction(action)
+            //self.executeViewAction(action)
         }
     }
     
@@ -26,21 +24,7 @@ struct ContainerView: View {
     
     @State private var showSheet = false
     
-    private func executeViewAction(_ viewAction:ViewAction) {
-        switch viewAction {
-        case .enableLink:
-            print("\(viewModel) executeViewAction enableLink")
-        case .dismiss:
-            self.presentationMode.wrappedValue.dismiss()
-        case .none:
-            ()
-        case .showSheet(let show):
-            self.showSheet = show
-        }
-    }
-    
     private func navigationLink() -> some View {
-        print("\(viewModel) navigation link viewmodel enable = \(viewModel.enableNavigationLink)")
         let newContainer = viewModel.nextView()
         return NavigationLink(destination: newContainer, isActive: $viewModel.enableNavigationLink){}
     }

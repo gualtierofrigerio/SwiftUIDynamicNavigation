@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            ContainerView(viewModel: coordinator.nextViewModel())
+            ContainerView(viewModel: coordinator.viewModel(forState: .start))
         }
     }
     

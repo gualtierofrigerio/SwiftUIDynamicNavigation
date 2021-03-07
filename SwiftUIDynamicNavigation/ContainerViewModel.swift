@@ -14,41 +14,41 @@ let mockViewModel = ContainerViewModel(withCoordinator:Coordinator())
 class ContainerViewModel: ObservableObject {
     let coordinator:Coordinator
     var enableNavigationLink = false
+    @Published var viewAction:ViewAction = .none
     
     init(withCoordinator coordinator:Coordinator) {
         self.coordinator = coordinator
-        print("ContainerViewmodel created \(id)")
     }
     
     func currentView() -> some View {
-        print("\(self) currentView called")
-        return ViewFactory.viewForState(coordinator.state, coordinator: coordinator)
+        return ViewFactory.viewForState(viewState, coordinator: coordinator)
     }
     
     func executeViewAction(_ viewAction:ViewAction) {
         switch viewAction {
         case .enableLink:
             enableNavigationLink = true
+        case .update(let newState):
+            viewState = newState
+            self.viewAction = viewAction
         default:
-            changesPublisher = viewAction
+            self.viewAction = viewAction
         }
-            
-        
     }
     
     func getChangesPublisher() -> AnyPublisher<ViewAction, Never> {
-        $changesPublisher.eraseToAnyPublisher()
+        $viewAction.eraseToAnyPublisher()
     }
     
     func nextView() -> some View {
-        let viewModel = coordinator.nextViewModel()
+        let viewModel = coordinator.viewModel(after:self)
         return ContainerView(viewModel: viewModel)
     }
     
     
     // MARK: - Private
-    @Published private var changesPublisher:ViewAction = .none
     private var id = UUID()
+    private var viewState:ViewState = .start
 }
 
 extension ContainerViewModel: ActionsHandler {
