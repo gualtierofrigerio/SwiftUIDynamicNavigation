@@ -15,8 +15,10 @@ struct ContainerView: View {
         VStack {
             viewModel.currentView()
             navigationLink()
-        }.onReceive(viewModel.getChangesPublisher()) { action in
-            //self.executeViewAction(action)
+        }.onReceive(viewModel.getViewActionPublisher()) { action in
+            if case .dismiss = action {
+                presentationMode.wrappedValue.dismiss()
+            }
         }
     }
     
