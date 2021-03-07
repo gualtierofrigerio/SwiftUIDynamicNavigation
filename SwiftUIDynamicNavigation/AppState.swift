@@ -13,7 +13,17 @@ import Foundation
 enum AppState {
     case start
     case progress
+    case end
     case success
     case failure
 }
+
+enum ViewState {
+    case start
+    case progress
+    case success
+    case failure
+}
+
+//typealias ViewState = AppState
 
