@@ -36,7 +36,7 @@ class ContainerViewModel: ObservableObject {
         }
     }
     
-    func getChangesPublisher() -> AnyPublisher<ViewAction, Never> {
+    func getViewActionPublisher() -> AnyPublisher<ViewAction, Never> {
         $viewAction.eraseToAnyPublisher()
     }
     
