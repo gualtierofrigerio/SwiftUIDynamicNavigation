@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var coordinator:Coordinator
+    var coordinator:Coordinator
     
     var body: some View {
         NavigationView {

@@ -20,7 +20,7 @@ enum ViewAction {
 
 /// Coordinator class respnsible for mutating the AppState enum
 /// and provide the correct view for the current state
-class Coordinator:ObservableObject {
+class Coordinator {
     @Published private (set) var state:AppState = .start
     @Published private (set) var nextAction:ViewAction = .none
     
